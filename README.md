@@ -1,48 +1,163 @@
-Boston Housing Dataset Analysis and Modeling
-Overview
+# Boston House Price Prediction
 
-This repository contains Python code for analyzing the Boston Housing dataset and building predictive models for housing prices using various machine learning algorithms. The dataset contains information collected by the U.S Census Service concerning housing in the area of Boston, Massachusetts. It has been used extensively in the data science community for learning and benchmarking purposes.
-Contents
+A comprehensive machine learning project for predicting Boston housing prices using various regression algorithms and data preprocessing techniques.
 
-    boston.csv: The dataset file containing the housing data.
-    boston_housing_analysis.ipynb: Jupyter Notebook containing the Python code for data analysis, preprocessing, modeling, and evaluation.
-    README.md: This file, providing an overview of the project.
+## 📊 Project Overview
 
-Requirements
+This project implements a complete machine learning pipeline for Boston house price prediction, exploring different data preprocessing methods, feature selection techniques, and regression algorithms to achieve optimal prediction accuracy.
 
-    Python 3
-    Jupyter Notebook
-    Libraries: numpy, pandas, matplotlib, seaborn, scikit-learn
+### 🎯 Objectives
+- Perform comprehensive exploratory data analysis on the Boston housing dataset
+- Compare different outlier handling strategies (removal vs capping)
+- Evaluate various feature scaling methods (StandardScaler vs RobustScaler)
+- Implement feature selection to identify the most predictive variables
+- Build and optimize multiple regression models
+- Provide detailed performance comparison across different approaches
 
-Usage
+## 📁 Dataset
 
-    Clone this repository to your local machine.
-    Install the required libraries if you haven't already.
-    Open the boston_housing_analysis.ipynb file in a Jupyter Notebook environment.
-    Run the cells in the notebook to execute the code step by step.
-    Analyze the results and modify the code as needed for further experimentation.
+The project uses the Boston Housing dataset, which contains information about housing in the area of Boston, Massachusetts.
 
-Description
+**Features include:**
+- `CRIM`: Per capita crime rate by town
+- `ZN`: Proportion of residential land zoned for lots over 25,000 sq.ft
+- `INDUS`: Proportion of non-retail business acres per town
+- `CHAS`: Charles River dummy variable (1 if tract bounds river; 0 otherwise)
+- `NOX`: Nitric oxides concentration (parts per 10 million)
+- `RM`: Average number of rooms per dwelling
+- `AGE`: Proportion of owner-occupied units built prior to 1940
+- `DIS`: Weighted distances to employment centers
+- `RAD`: Index of accessibility to radial highways
+- `TAX`: Full-value property-tax rate per $10,000
+- `PTRATIO`: Pupil-teacher ratio by town
+- `B`: Proportion of blacks by town
+- `LSTAT`: % lower status of the population
+- `MEDV`: Median value of owner-occupied homes in $1000's (target variable)
 
-    The analysis begins with loading the dataset and performing basic exploratory data analysis (EDA) to understand the structure and distribution of the data.
-    Data preprocessing steps include checking for missing values, duplicate records, and outlier detection and removal.
-    Feature selection techniques such as correlation analysis and SelectKBest are used to identify the most important features for modeling.
-    Several machine learning models are trained and evaluated on the dataset, including Linear Regression, Support Vector Regression (SVR), and Random Forest Regression.
-    Hyperparameter tuning is performed using GridSearchCV to optimize the model performance.
-    The performance of each model is evaluated using metrics such as Mean Squared Error (MSE) and R-squared (R2) score.
+## 🛠️ Technologies Used
 
-Results
+- **Python 3.x**
+- **Data Manipulation**: pandas, numpy
+- **Visualization**: matplotlib, seaborn
+- **Machine Learning**: scikit-learn
+- **Models**: Linear Regression, Ridge, Lasso, Random Forest, SVR
 
-    Linear Regression model achieved an MSE of approximately 21.52 and an R2 score of about 0.71.
-    Support Vector Regression (SVR) with a linear kernel achieved an MSE of around 25.63 and an R2 score of approximately 0.66.
-    Random Forest Regression performed the best with an MSE of about 9.62 and an R2 score of around 0.87 after hyperparameter tuning.
+## 📋 Requirements
 
-Conclusion
+```python
+numpy
+pandas
+matplotlib
+seaborn
+scikit-learn
+warnings
+```
 
-    Random Forest Regression outperformed other models in terms of predictive accuracy for the Boston Housing dataset.
-    The choice of preprocessing techniques and feature selection methods significantly impacts the model performance.
-    Hyperparameter tuning using GridSearchCV can further improve the model's performance.
+## 🚀 Installation & Usage
 
-Acknowledgments
+1. **Clone the repository**
+```bash
+git clone https://github.com/yourusername/boston-house-price-prediction.git
+cd boston-house-price-prediction
+```
 
-    The Boston Housing dataset is part of the UCI Machine Learning Repository and has been widely used in the machine learning community for educational and research purposes.
+2. **Install required packages**
+```bash
+pip install -r requirements.txt
+```
+
+3. **Prepare your data**
+   - Ensure you have the `boston.csv` file in your working directory
+   - Update the file path in the code if necessary
+
+4. **Run the analysis**
+```bash
+python boston_house_price_prediction.py
+```
+
+## 📊 Analysis Workflow
+
+### 1. **Data Exploration & Quality Assessment**
+- Dataset information and statistical summary
+- Missing values and duplicate detection
+- Feature correlation analysis
+
+### 2. **Exploratory Data Analysis**
+- Correlation heatmaps for feature relationships
+- Distribution plots for all variables
+- Boxplots for outlier identification
+
+### 3. **Data Preprocessing**
+
+#### Outlier Handling Strategies:
+- **Method 1**: Complete outlier removal using IQR method
+- **Method 2**: Outlier capping (winsorization) to boundary values
+
+#### Feature Scaling Comparison:
+- **StandardScaler**: Standardizes features by removing mean and scaling to unit variance
+- **RobustScaler**: Uses median and IQR, more robust to outliers
+
+### 4. **Feature Selection**
+- SelectKBest with f_classif scoring
+- Identification of top 5 most predictive features
+- Correlation analysis of selected features
+
+### 5. **Model Development & Evaluation**
+
+#### Baseline Models:
+- Linear Regression
+- Support Vector Regression (Linear kernel)
+- Random Forest Regressor
+
+#### Hyperparameter Optimization:
+- **Ridge Regression**: GridSearchCV for alpha tuning
+- **Lasso Regression**: Manual cross-validation for alpha selection
+- **Random Forest**: Comprehensive grid search across multiple parameters
+
+### 6. **Model Validation**
+- 5-fold cross-validation for all models
+- Train-test split (70-30) for final evaluation
+- Performance metrics: MSE and R²
+
+## 📈 Key Results
+
+The analysis provides comprehensive performance comparisons across:
+- Different data preprocessing approaches
+- Various feature selection strategies
+- Multiple regression algorithms with optimal hyperparameters
+
+### Performance Metrics
+- **Mean Squared Error (MSE)**: Lower values indicate better performance
+- **R-squared (R²)**: Higher values indicate better model fit (closer to 1.0)
+
+## 🔍 Key Insights
+
+1. **Outlier Treatment**: Comparison between removal vs capping strategies shows their impact on model performance
+2. **Feature Scaling**: RobustScaler generally performs better with outlier-prone data
+3. **Feature Selection**: Top 5 features provide competitive performance with reduced complexity
+4. **Model Performance**: Hyperparameter tuning significantly improves baseline model performance
+
+## 📊 Visualizations
+
+The project generates multiple visualizations:
+- Correlation matrices before/after preprocessing
+- Feature distribution plots
+- Boxplots for outlier analysis
+- Scaling method comparisons
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 🙏 Acknowledgments
+
+- Boston Housing dataset from the UCI Machine Learning Repository
+- Scikit-learn community for excellent machine learning tools
+- Matplotlib and Seaborn for powerful visualization capabilities
+---
+
+⭐ **If you found this project helpful, please give it a star!** ⭐
